@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Management System - User</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    <link rel="stylesheet" href="main_user_sidebar_design.css">
+
+
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="LOGO1.png" alt="LOGO" class="logo" />
+            <span class="logo-text-complaint">Complaint</span>
+            <span class="logo-text-desk">Desk</span>
+        </div>
+
+        <!-- Account Name Bar -->
+        <div class="account-name-bar">
+            <span class="account-name">Angela Raquedan</span>
+            <span class="material-symbols-rounded account-icon">account_circle</span>
+        </div>
+
+        <!-- Hamburger Menu (Mobile) -->
+        <div class="menu-toggle" id="menuToggle" onclick="toggleSidebar()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <a href="#home" class="sidebar-link active" onclick="navigateTo(event, 'home')">
+            <span class="sidebar-icon material-symbols-rounded">home</span>
+            <span class="sidebar-text">Home</span>
+        </a>
+        <a href="#complaint_history" class="sidebar-link" onclick="navigateTo(event, 'complaint_history')">
+            <span class="sidebar-icon material-symbols-rounded">history</span>
+            <span class="sidebar-text">Complaint History</span>
+        </a>
+        <a href="#about" class="sidebar-link" onclick="navigateTo(event, 'about')">
+            <span class="sidebar-icon material-symbols-rounded">info</span>
+            <span class="sidebar-text">About Us</span>
+        </a>
+        <a href="#help" class="sidebar-link" onclick="navigateTo(event, 'help')">
+            <span class="sidebar-icon material-symbols-rounded">help</span>
+            <span class="sidebar-text">Help & FAQs</span>
+        </a>
+        <a href="#account" class="sidebar-link" onclick="navigateTo(event, 'account')">
+            <span class="sidebar-icon material-symbols-rounded">settings</span>
+            <span class="sidebar-text">Account Settings</span>
+        </a>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="main-wrapper">
+        <div id="content-container">
+            <div class="content-card">
+                <h2>Welcome to Complaint Desk</h2>
+                <p>Select a menu item from the sidebar to navigate through the application.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 'home';
+
+        function navigateTo(event, page) {
+            event.preventDefault();
+            currentPage = page;
+
+            // Update active link styling
+            document.querySelectorAll('.sidebar-link').forEach(link => link.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Close mobile sidebar
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.remove('open');
+
+            // Define file paths for each page
+            const files = {
+                'home': 'html_pages/user_front.html',
+                'complaint_history': 'html_pages/complaint_history.html',
+                'about': 'html_pages/about_us_page.html',
+                'help': 'html_pages/helps_and_faqs.html',
+                'account': 'html_pages/account_setings.html'
+            };
+
+            // Load the selected HTML page
+            fetch(files[page])
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Page not found: ' + files[page]);
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    const container = document.getElementById('content-container');
+                    container.innerHTML = html;
+
+                    // Run scripts inside the loaded content
+                    const scripts = container.querySelectorAll('script');
+                    scripts.forEach(script => {
+                        const newScript = document.createElement('script');
+                        newScript.textContent = script.textContent;
+                        document.body.appendChild(newScript);
+                        document.body.removeChild(newScript);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading page:', error);
+                    document.getElementById('content-container').innerHTML = 
+                        `<div class="content-card">
+                            <h2 style="color: #e53935;">Error Loading Page</h2>
+                            <p>Unable to load ${page}. Please try again.</p>
+                        </div>`;
+                });
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.getElementById('menuToggle');
+            
+            if (window.innerWidth <= 768) {
+                if (!sidebar.contains(event.target) && !menuToggle.contains(event.target)) {
+                    sidebar.classList.remove('open');
+                }
+            }
+        });
+
+        // Load Home page on first load
+        window.addEventListener("DOMContentLoaded", () => {
+            const homeLink = document.querySelector('.sidebar-link[href="#home"]');
+            navigateTo({ preventDefault: () => {}, currentTarget: homeLink }, 'home');
+        });
+    </script>
+</body>
+
+</html>

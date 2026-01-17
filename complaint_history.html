@@ -1,0 +1,214 @@
+<link rel="stylesheet" href="styles/complaint_history.css">
+
+     <div class="main-content">
+        <h1 class="greeting">Complaint History</h1>
+        <p class="subtitle">See your complaint logs here.</p>
+        
+        <!-- Filter Container -->
+        <div class="filter-container">
+            <div class="filter-header">
+                <div class="filter-title">Filter Complaints</div>
+                <button class="clear-filters-btn" onclick="clearFilters()">Clear All</button>
+            </div>
+
+            <div class="filter-grid">
+                <!-- Search -->
+                <div class="filter-group">
+                    <label for="searchInput">Search by Name</label>
+                    <div class="search-wrapper">
+                        <span class="material-symbols-rounded search-icon">search</span>
+                        <input type="text" id="searchInput" placeholder="Search...">
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-type">Complaint Type</label>
+                    <select id="filter-type">
+                        <option value="">All Types</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="facility">Facility</option>
+                        <option value="noise">Noise</option>
+                        <option value="billing">Billing</option>
+                        <option value="neighbor">Neighbor</option>
+                        <option value="security">Security</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="filter-date">Specific Date</label>
+                    <input type="date" id="filter-date">
+                </div>
+
+                <div class="filter-group">
+                    <label for="monthFilter">Monthly</label>
+                    <select id="monthFilter">
+                        <option value="all">All Months</option>
+                        <option value="january">January 2025</option>
+                        <option value="february">February 2025</option>
+                        <option value="march">March 2025</option>
+                        <option value="april">April 2025</option>
+                        <option value="may">May 2025</option>
+                        <option value="june">June 2025</option>
+                        <option value="july">July 2025</option>
+                        <option value="august">August 2025</option>
+                        <option value="september">September 2025</option>
+                        <option value="october">October 2025</option>
+                        <option value="november">November 2025</option>
+                        <option value="december">December 2025</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resolved Column -->
+        <div class="kanban-column">
+            <div class="kanban-header resolved">
+                <h3>Resolved Complaint Records</h3>
+                <span class="column-count">3</span>
+            </div>
+
+            <div class="kanban-cards">
+                <!-- Complaint Card 1 -->
+                <div class="complaint-card" data-id="C3" data-room="Room 302" data-tenant="Bob Wilson" data-type="Billing" data-description="Incorrect charges on monthly statement" data-date="Oct 13, 2025 10:00 AM" data-resolved="Oct 17, 2025 03:45 PM">
+                    <div class="card-header">
+                        <div class="card-id">C3</div>
+                        <button class="export-pdf-btn" onclick="exportToPDF(this)">
+                            <span class="material-symbols-rounded" style="font-size: 18px;">download</span>
+                            Export PDF
+                        </button>
+                    </div>
+
+                    <div class="card-info">
+                        <span>🏠 Room 302</span>
+                        <span>👤 Bob Wilson</span>
+                    </div>
+                    <div class="type-badge">Billing</div>
+                    <div class="card-description">Incorrect charges on monthly statement</div>
+                    <div class="card-date">📅 Oct 13, 2025 10:00 AM</div>
+                    <div class="last-update" style="color: #66BB6A;">✅ Resolved: Oct 17, 2025 03:45 PM</div>
+
+                    <div class="records-title">Records</div>
+                    <div class="record-logs-container">
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 13, 2025 10:00 AM:</span>
+                            <span class="log-message">Billing discrepancy reported</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 13, 2025 11:30 AM:</span>
+                            <span class="log-message">Finance team notified</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 15, 2025 09:00 AM:</span>
+                            <span class="log-message">Billing records reviewed and verified</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 17, 2025 02:00 PM:</span>
+                            <span class="log-message">Credit issued to tenant account</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 17, 2025 03:45 PM:</span>
+                            <span class="log-message">Tenant notified and confirmed resolution</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Complaint Card 2 -->
+                <div class="complaint-card" data-id="C8" data-room="Room 302" data-tenant="Bob Wilson" data-type="Billing" data-description="Incorrect charges on monthly statement" data-date="Oct 13, 2025 10:00 AM" data-resolved="Oct 17, 2025 03:45 PM">
+                    <div class="card-header">
+                        <div class="card-id">C8</div>
+                        <button class="export-pdf-btn" onclick="exportToPDF(this)">
+                            <span class="material-symbols-rounded" style="font-size: 18px;">download</span>
+                            Export PDF
+                        </button>
+                    </div>
+
+                    <div class="card-info">
+                        <span>🏠 Room 302</span>
+                        <span>👤 Bob Wilson</span>
+                    </div>
+                    <div class="type-badge">Billing</div>
+                    <div class="card-description">Incorrect charges on monthly statement</div>
+                    <div class="card-date">📅 Oct 13, 2025 10:00 AM</div>
+                    <div class="last-update" style="color: #66BB6A;">✅ Resolved: Oct 17, 2025 03:45 PM</div>
+
+                    <div class="records-title">Records</div>
+                    <div class="record-logs-container">
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 13, 2025 10:00 AM:</span>
+                            <span class="log-message">Billing discrepancy reported</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 13, 2025 11:30 AM:</span>
+                            <span class="log-message">Finance team notified</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 15, 2025 09:00 AM:</span>
+                            <span class="log-message">Billing records reviewed and verified</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 17, 2025 02:00 PM:</span>
+                            <span class="log-message">Credit issued to tenant account</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 17, 2025 03:45 PM:</span>
+                            <span class="log-message">Tenant notified and confirmed resolution</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Complaint Card 3 -->
+                <div class="complaint-card" data-id="C6" data-room="Room 210" data-tenant="Emily Davis" data-type="Maintenance" data-description="Broken window lock needs replacement" data-date="Oct 12, 2025 08:30 AM" data-resolved="Oct 16, 2025 02:00 PM">
+                    <div class="card-header">
+                        <div class="card-id">C6</div>
+                        <button class="export-pdf-btn" onclick="exportToPDF(this)">
+                            <span class="material-symbols-rounded" style="font-size: 18px;">download</span>
+                            Export PDF
+                        </button>
+                    </div>
+
+                    <div class="card-info">
+                        <span>🏠 Room 210</span>
+                        <span>👤 Emily Davis</span>
+                    </div>
+                    <div class="type-badge">Maintenance</div>
+                    <div class="card-description">Broken window lock needs replacement</div>
+                    <div class="card-date">📅 Oct 12, 2025 08:30 AM</div>
+                    <div class="last-update" style="color: #66BB6A;">✅ Resolved: Oct 16, 2025 02:00 PM</div>
+
+                    <div class="records-title">Records</div>
+                    <div class="record-logs-container">
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 12, 2025 08:30 AM:</span>
+                            <span class="log-message">Window lock repair requested</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 12, 2025 09:15 AM:</span>
+                            <span class="log-message">Maintenance team assigned</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 14, 2025 02:30 PM:</span>
+                            <span class="log-message">Lock replacement scheduled</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 16, 2025 10:00 AM:</span>
+                            <span class="log-message">Repair work completed</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 16, 2025 02:00 PM:</span>
+                            <span class="log-message">Inspection passed and approved by tenant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function clearFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('filter-type').value = '';
+            document.getElementById('filter-date').value = '';
+            document.getElementById('monthFilter').value = 'all';
+        }
+    </script>

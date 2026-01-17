@@ -1,0 +1,581 @@
+<link rel="stylesheet" href="styles/account_settings.css">
+
+<div class="main-content">
+    <h1 class="greeting">Account Settings</h1>
+    <p class="subtitle">Welcome to your profile!</p>
+
+    <div class="container">
+        <!-- Profile Card -->
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="avatar-container">
+                    <div class="avatar"><span class="material-symbols-rounded">person</span></div>
+                </div>
+                <h2 class="profile-name">John Doe</h2>
+                <div class="profile-role"><span class="material-symbols-rounded">account_circle</span>User</div>
+            </div>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <span class="material-symbols-rounded">badge</span>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-label">Full Name</div>
+                            <div class="info-value">John Doe</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <span class="material-symbols-rounded">email</span>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-label">Email Address</div>
+                            <div class="info-value">john.doe@example.com</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <span class="material-symbols-rounded">phone</span>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-label">Phone Number</div>
+                            <div class="info-value">09123456789</div>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <span class="material-symbols-rounded">door_front</span>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-label">Room Number</div>
+                            <div class="info-value">301</div>
+                        </div>
+
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <span class="material-symbols-rounded">date_range</span>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-label">Member Since</div>
+                            <div class="info-value">3 years</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button class="edit-profile-btn" onclick="openEditModal()">
+                    <span class="material-symbols-rounded">edit</span>
+                    Edit Profile
+                </button>
+            </div>
+
+            <!-- Actions Card -->
+            <div class="actions-card">
+
+                <!-- Security Settings -->
+                <div class="action-item">
+                    <div class="action-header">
+                        <div class="action-icon-circle security">
+                            <span class="material-symbols-rounded">lock</span>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Security Settings</h3>
+                            <p class="action-subtitle">Manage your login credentials and keep your account secure.</p>
+                        </div>
+                    </div>
+                    <button class="action-btn security" onclick="openPasswordModal()">
+                        <span class="material-symbols-rounded">key</span>
+                        Change Password
+                    </button>
+                </div>
+
+                <!-- Logout -->
+                <div class="action-item logout">
+                    <div class="action-header">
+                        <div class="action-icon-circle logout">
+                            <span class="material-symbols-rounded">logout</span>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Logout</h3>
+                            <p class="action-subtitle">End your current session and return to the login page.</p>
+                        </div>
+                    </div>
+                    <button class="action-btn logout-btn" onclick="handleLogout()">
+                        <span class="material-symbols-rounded">logout</span>
+                        Logout Now
+                    </button>
+                </div>
+
+                <!-- Information -->
+                <div class="action-item info">
+                    <div class="action-header">
+                        <div class="action-icon-circle info">
+                            <span class="material-symbols-rounded">info</span>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="action-title">Account Information</h3>
+                            <p class="action-subtitle">View additional details and helpful resources about your account.</p>
+                        </div>
+                    </div>
+                    <button class="action-btn info" onclick="openExtrasModal()">
+                        <span class="material-symbols-rounded">description</span>
+                        View Details
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<!-- Edit Profile Modal -->
+<div class="modal-overlay" id="editModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2 class="modal-title">
+                <span class="material-symbols-rounded">edit</span>
+                Edit Your Profile
+            </h2>
+            <p class="modal-subtitle">Update your personal information to keep your profile accurate and up to date.</p>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="form-label">
+                    <span class="material-symbols-rounded">badge</span>
+                    Name
+                </label>
+                <input type="text" class="form-input" id="profileName" value="John Doe">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    <span class="material-symbols-rounded">email</span>
+                    Email
+                </label>
+                <input type="email" class="form-input" id="profileEmail" value="john.doe@example.com">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    <span class="material-symbols-rounded">phone</span>
+                    Phone Number
+                </label>
+                <input type="tel" class="form-input" id="profilePhone" value="09123456789">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    <span class="material-symbols-rounded">door_front</span>
+                    Room Number
+                </label>
+                <input type="tel" class="form-input" id="roomNumber" value="301">
+            </div>
+
+            <div class="error-message" id="editError"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-save" onclick="saveProfile()">
+                Save
+            </button>
+            <button class="btn-cancel" onclick="closeEditModal()">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Change Password Modal -->
+<div class="modal-overlay" id="passwordModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2 class="modal-title">
+                <span class="material-symbols-rounded">key</span>
+                Change Password
+            </h2>
+            <p class="modal-subtitle">Update your password to enhance your account's security.</p>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="form-label">
+                    <span class="material-symbols-rounded">lock</span>
+                    Current Password
+                </label>
+                <input type="password" class="form-input" id="currentPassword">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    <span class="material-symbols-rounded">lock_open</span>
+                    New Password
+                </label>
+                <input type="password" class="form-input" id="newPassword">
+                <small style="color: #666; font-size: 12px; margin-top: 4px; display: block;">
+                    Must be at least 8 characters with uppercase, lowercase, and number
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">
+                    <span class="material-symbols-rounded">verified_user</span>
+                    Confirm New Password
+                </label>
+                <input type="password" class="form-input" id="confirmPassword">
+            </div>
+
+            <div class="error-message" id="passwordError"></div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-save" onclick="savePassword()">
+                Save
+            </button>
+            <button class="btn-cancel" onclick="closePasswordModal()">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Extras Information Modal -->
+<div id="extrasModal" class="modal-overlay">
+    <div class="modal">
+
+        <!-- Header -->
+        <div class="modal-header">
+            <h2 class="modal-title">
+                <span class="material-symbols-rounded">info</span>
+                Information
+            </h2>
+            <p class="modal-subtitle">
+                Additional details and helpful resources about your account and the system.
+            </p>
+        </div>
+
+        <!-- Body -->
+        <div class="modal-body">
+            <div class="extras-content">
+
+                <!-- Section 1: Account Information -->
+                <div class="extras-section">
+                    <h3 class="extras-section-title">
+                        <span class="material-symbols-rounded">account_circle</span>
+                        Account Information
+                    </h3>
+                    <div class="extras-grid">
+                        <div class="extras-card">
+                            <span class="material-symbols-rounded extras-icon">verified_user</span>
+                            <div>
+                                <div class="extras-item-title">Account Status</div>
+                                <div class="extras-item-value">Active and in good standing</div>
+                            </div>
+                        </div>
+
+                        <div class="extras-card">
+                            <span class="material-symbols-rounded extras-icon">calendar_month</span>
+                            <div>
+                                <div class="extras-item-title">Member Since</div>
+                                <div class="extras-item-value">January 15, 2024</div>
+                            </div>
+                        </div>
+
+                        <div class="extras-card">
+                            <span class="material-symbols-rounded extras-icon">schedule</span>
+                            <div>
+                                <div class="extras-item-title">Last Login</div>
+                                <div class="extras-item-value">November 30, 2024 at 10:30 AM</div>
+                            </div>
+                        </div>
+
+                        <div class="extras-card">
+                            <span class="material-symbols-rounded extras-icon">badge</span>
+                            <div>
+                                <div class="extras-item-title">Account ID</div>
+                                <div class="extras-item-value">CD-ID-01003</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Activity & Support -->
+                <div class="extras-section">
+                    <h3 class="extras-section-title">
+                        <span class="material-symbols-rounded">insights</span>
+                        Activity & Support
+                    </h3>
+                    <div class="extras-grid">
+                        <div class="extras-card">
+                            <span class="material-symbols-rounded extras-icon">bar_chart</span>
+                            <div>
+                                <div class="extras-item-title">Total Complaints Filed</div>
+                                <div class="extras-item-value">12 complaints</div>
+                            </div>
+                        </div>
+
+                        <div class="extras-card">
+                            <span class="material-symbols-rounded extras-icon">support_agent</span>
+                            <div>
+                                <div class="extras-item-title">Support Contact</div>
+                                <div class="extras-item-value">
+                                    support@complaintdesk.com<br>(02) 1234-5678
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer">
+            <button class="btn-cancel" onclick="closeExtrasModal()">
+                Close
+            </button>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    // Validation Functions
+    function validateName(name) {
+        if (!name || name.trim().length === 0) {
+            return 'Name is required';
+        }
+        if (name.trim().length < 2) {
+            return 'Name must be at least 2 characters long';
+        }
+        if (name.trim().length > 100) {
+            return 'Name must not exceed 100 characters';
+        }
+        if (!/^[a-zA-Z\s'-]+$/.test(name)) {
+            return 'Name can only contain letters, spaces, hyphens, and apostrophes';
+        }
+        return null;
+    }
+
+    function validateEmail(email) {
+        if (!email || email.trim().length === 0) {
+            return 'Email is required';
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return 'Please enter a valid email address';
+        }
+        return null;
+    }
+
+    function validatePhone(phone) {
+        if (!phone || phone.trim().length === 0) {
+            return 'Phone number is required';
+        }
+        // Philippine phone number format (09 or +639)
+        const phoneRegex = /^(09|\+639)\d{9}$/;
+        if (!phoneRegex.test(phone.replace(/\s|-/g, ''))) {
+            return 'Please enter a valid Philippine phone number (e.g., 09123456789)';
+        }
+        return null;
+    }
+
+    function validatePassword(password) {
+        if (!password || password.length === 0) {
+            return 'Password is required';
+        }
+        if (password.length < 8) {
+            return 'Password must be at least 8 characters long';
+        }
+        if (!/[A-Z]/.test(password)) {
+            return 'Password must contain at least one uppercase letter';
+        }
+        if (!/[a-z]/.test(password)) {
+            return 'Password must contain at least one lowercase letter';
+        }
+        if (!/[0-9]/.test(password)) {
+            return 'Password must contain at least one number';
+        }
+        return null;
+    }
+
+    function showError(elementId, message) {
+        const errorElement = document.getElementById(elementId);
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+    }
+
+    function clearError(elementId) {
+        const errorElement = document.getElementById(elementId);
+        errorElement.textContent = '';
+        errorElement.style.display = 'none';
+    }
+
+    // Edit Profile Modal
+    function openEditModal() {
+        document.getElementById('editModal').classList.add('active');
+        clearError('editError');
+    }
+
+    function closeEditModal() {
+        document.getElementById('editModal').classList.remove('active');
+        clearError('editError');
+    }
+
+    function saveProfile() {
+        clearError('editError');
+        
+        const name = document.getElementById('profileName').value;
+        const email = document.getElementById('profileEmail').value;
+        const phone = document.getElementById('profilePhone').value;
+
+        // Validate all fields
+        const nameError = validateName(name);
+        if (nameError) {
+            showError('editError', nameError);
+            return;
+        }
+
+        const emailError = validateEmail(email);
+        if (emailError) {
+            showError('editError', emailError);
+            return;
+        }
+
+        const phoneError = validatePhone(phone);
+        if (phoneError) {
+            showError('editError', phoneError);
+            return;
+        }
+
+        // If all validations pass
+        alert('Profile updated successfully!');
+        closeEditModal();
+    }
+
+    // Change Password Modal
+    function openPasswordModal() {
+        document.getElementById('passwordModal').classList.add('active');
+        clearError('passwordError');
+        // Clear password fields
+        document.getElementById('currentPassword').value = '';
+        document.getElementById('newPassword').value = '';
+        document.getElementById('confirmPassword').value = '';
+    }
+
+    function closePasswordModal() {
+        document.getElementById('passwordModal').classList.remove('active');
+        clearError('passwordError');
+    }
+
+    function savePassword() {
+        clearError('passwordError');
+        
+        const currentPassword = document.getElementById('currentPassword').value;
+        const newPassword = document.getElementById('newPassword').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+
+        // Validate current password
+        if (!currentPassword || currentPassword.length === 0) {
+            showError('passwordError', 'Current password is required');
+            return;
+        }
+
+        // Validate new password
+        const passwordError = validatePassword(newPassword);
+        if (passwordError) {
+            showError('passwordError', passwordError);
+            return;
+        }
+
+        // Check if new password is same as current
+        if (currentPassword === newPassword) {
+            showError('passwordError', 'New password must be different from current password');
+            return;
+        }
+
+        // Validate password confirmation
+        if (!confirmPassword || confirmPassword.length === 0) {
+            showError('passwordError', 'Please confirm your new password');
+            return;
+        }
+
+        if (newPassword !== confirmPassword) {
+            showError('passwordError', 'New password and confirmation do not match');
+            return;
+        }
+
+        // If all validations pass
+        alert('Password changed successfully!');
+        closePasswordModal();
+    }
+
+    // Logout
+    function handleLogout() {
+        if (confirm('Are you sure you want to logout?')) {
+            alert('Logging out...');
+            // Redirect logic would go here
+        }
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('editModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeEditModal();
+        }
+    });
+
+    document.getElementById('passwordModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closePasswordModal();
+        }
+    });
+
+    // Real-time validation (optional - remove if you prefer validation only on submit)
+    document.getElementById('profileName')?.addEventListener('blur', function() {
+        const error = validateName(this.value);
+        if (error) {
+            showError('editError', error);
+        } else {
+            clearError('editError');
+        }
+    });
+
+    document.getElementById('profileEmail')?.addEventListener('blur', function() {
+        const error = validateEmail(this.value);
+        if (error) {
+            showError('editError', error);
+        } else {
+            clearError('editError');
+        }
+    });
+
+    document.getElementById('profilePhone')?.addEventListener('blur', function() {
+        const error = validatePhone(this.value);
+        if (error) {
+            showError('editError', error);
+        } else {
+            clearError('editError');
+        }
+    });
+
+    // Extra Information Modal
+    function openExtrasModal() {
+        document.getElementById('extrasModal').classList.add('active');
+    }
+
+    function closeExtrasModal() {
+        document.getElementById('extrasModal').classList.remove('active');
+    }
+
+    // Close extras modal when clicking outside
+    document.getElementById('extrasModal')?.addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeExtrasModal();
+        }
+    });
+    </script
+</body>
+</html>

@@ -1,0 +1,429 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #F3F8FF 0%, #E8F4FE 100%);
+    color: #0a1128;
+    min-height: 100vh;
+}
+
+/* ──────────────── MAIN CONTENT ──────────────── */
+.main-content {
+    padding: 10px;
+    max-width: 1600px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.greeting {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #0a1128, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+/* ──────────────── FILTER CONTAINER ──────────────── */
+.filter-container {
+    background: white;
+    border: 2px solid #bbdefb;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 30px;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.filter-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0a1128;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.clear-filters-btn {
+    background: transparent;
+    border: 2px solid #e5e7eb;
+    color: #6b7280;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.clear-filters-btn:hover {
+    border-color: #F5425C;
+    color: #F5425C;
+    background: #FEF2F2;
+}
+
+.filter-grid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1 1 200px;
+    min-width: 180px;
+}
+
+.filter-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0a1128;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #42a5f5;
+    pointer-events: none;
+    font-size: 20px;
+}
+
+.filter-group input[type="text"] {
+    padding: 12px 16px 12px 44px;
+}
+
+.filter-group input,
+.filter-group select {
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #0a1128;
+    transition: all 0.3s ease;
+    background: white;
+    width: 100%;
+}
+
+.filter-group select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%2342a5f5" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: #42a5f5;
+    box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.1);
+}
+
+.filter-group select:hover {
+    border-color: #90caf9;
+}
+
+/* ──────────────── KANBAN COLUMN ──────────────── */
+.kanban-column {
+    background: white;
+    border-radius: 20px;
+    padding: 0;
+    min-height: 400px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.kanban-column:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.kanban-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.kanban-header.resolved {
+    background: linear-gradient(135deg, #E8F5E9, #D4EDDA);
+    border-bottom: 3px solid #66BB6A;
+}
+
+.kanban-header h3 {
+    font-size: 18px;
+    color: #0a1128;
+}
+
+.column-count {
+    background: #0a1128;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.kanban-cards {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    flex: 1;
+    max-height: 600px;
+}
+
+.kanban-cards::-webkit-scrollbar {
+    width: 6px;
+}
+
+.kanban-cards::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.kanban-cards::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+}
+
+.kanban-cards::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* ──────────────── COMPLAINT CARD ──────────────── */
+.complaint-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.complaint-card:hover {
+    border-color: #42a5f5;
+    box-shadow: 0 6px 16px rgba(66, 165, 245, 0.15);
+    transform: translateY(-3px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.card-id {
+    display: inline-block;
+    background: linear-gradient(135deg, #42a5f5, #2196F3);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.export-pdf-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #42a5f5, #2196F3);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.export-pdf-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(66, 165, 245, 0.4);
+}
+
+.card-info {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #0a1128;
+    font-weight: 500;
+}
+
+.type-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #E3F5FF, #D1E7FF);
+    color: #0a1128;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    border-left: 3px solid #42a5f5;
+}
+
+.card-description {
+    font-size: 14px;
+    color: #4b5563;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.card-date {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.last-update {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+/* ──────────────── RECORDS SECTION ──────────────── */
+.records-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.record-logs-container {
+    margin-bottom: 12px;
+    max-height: 120px;
+    overflow-y: auto;
+    border-radius: 10px;
+    background: #f9fafb;
+    padding: 10px;
+}
+
+.record-logs-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.record-logs-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.record-logs-container::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 2px;
+}
+
+.record-log {
+    font-size: 12px;
+    color: #4b5563;
+    padding: 6px 0;
+    border-bottom: 1px solid #e5e7eb;
+    line-height: 1.4;
+}
+
+.record-log:last-child {
+    border-bottom: none;
+}
+
+.log-timestamp {
+    font-weight: 600;
+    color: #0a1128;
+}
+
+.log-message {
+    color: #6b7280;
+}
+
+
+/* ──────────────── ANIMATIONS ──────────────── */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ──────────────── RESPONSIVE DESIGN ──────────────── */
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+    }
+
+    .greeting {
+        font-size: 24px;
+    }
+
+    .filter-grid {
+        flex-direction: column;
+    }
+
+    .filter-group {
+        flex: 1 1 100%;
+    }
+
+    .card-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .export-pdf-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 1024px) {
+    .kanban-cards {
+        max-height: 500px;
+    }
+}
