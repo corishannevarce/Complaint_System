@@ -1,0 +1,9 @@
+USER PAGE NEW FEATURE
+
+* export pdf ng record logs
+* i think my right format ata na binanggit si mam about sa date
+
+- the rest ng features same padin para di na mahirapan
+
+
+

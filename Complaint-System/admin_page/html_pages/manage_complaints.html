@@ -1,0 +1,415 @@
+    <link rel="stylesheet" href="styles/manage_complaints.css">
+    
+    <!-- Manage Complaints Page -->
+    <div id="complaints-page" class="main-content">
+        <h1 class="greeting">Manage Complaints</h1>
+        <p class="subtitle">Manage all complaints in the system</p>
+
+        <!-- Container for both sections -->
+        <div class="top-section">
+            <!-- Handle Complaint -->
+            <div class="handle-menu">
+                <div class="menu-title">Handle Complaint</div>
+                <form class="menu-form" onsubmit="handleComplaint(event)">
+                    <div class="form-group">
+                        <label for="complaint-id">Complaint ID</label>
+                        <input type="text" id="complaint-id" placeholder="Enter ID (e.g., C1)" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" required>
+                            <option value="">Select status</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="resolved">Resolved</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group notes-group">
+                        <label for="notes">Notes</label>
+                        <textarea id="notes" placeholder="Add notes..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+
+            <!-- Filter Container -->
+            <div class="filter-container">
+                <div class="filter-title">Filter By</div>
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label for="filter-type">Complaint Type</label>
+                        <select id="filter-type">
+                            <option value="">All Types</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="facility">Facility</option>
+                            <option value="noise">Noise Complaint</option>
+                            <option value="security">Security</option>
+                            <option value="billing">Billing</option>
+                            <option value="neighbor">Neighbor</option>
+                            <option value="other">Others</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-date">Date</label>
+                        <input type="date" id="filter-date">
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-room">Room Number</label>
+                        <select id="filter-room">
+                            <option value="">All Rooms</option>
+                            <optgroup label="1st Floor">
+                                <option>101</option>
+                                <option>102</option>
+                                <option>103</option>
+                                <option>104</option>
+                                <option>105</option>
+                                <option>106</option>
+                                <option>107</option>
+                                <option>108</option>
+                                <option>109</option>
+                                <option>110</option>
+                            </optgroup>
+                            <optgroup label="2nd Floor">
+                                <option>201</option>
+                                <option>202</option>
+                                <option>203</option>
+                                <option>204</option>
+                                <option>205</option>
+                                <option>206</option>
+                                <option>207</option>
+                                <option>208</option>
+                                <option>209</option>
+                                <option>210</option>
+                            </optgroup>
+                            <optgroup label="3rd Floor">
+                                <option>301</option>
+                                <option>302</option>
+                                <option>303</option>
+                                <option>304</option>
+                                <option>305</option>
+                                <option>306</option>
+                                <option>307</option>
+                                <option>308</option>
+                                <option>309</option>
+                                <option>310</option>
+                            </optgroup>
+                            <optgroup label="4th Floor">
+                                <option>401</option>
+                                <option>402</option>
+                                <option>403</option>
+                                <option>404</option>
+                                <option>405</option>
+                                <option>406</option>
+                                <option>407</option>
+                                <option>408</option>
+                                <option>409</option>
+                                <option>410</option>
+                            </optgroup>
+                            <optgroup label="5th Floor">
+                                <option>501</option>
+                                <option>502</option>
+                                <option>503</option>
+                                <option>504</option>
+                                <option>505</option>
+                                <option>506</option>
+                                <option>507</option>
+                                <option>508</option>
+                                <option>509</option>
+                                <option>510</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kanban Columns -->
+        <h2 class="section-title">Complaints Overview</h2>
+        <div class="kanban-container">
+            <!-- Pending Column -->
+            <div class="kanban-column">
+                <div class="kanban-header pending">
+                    <h3>Pending</h3>
+                    <span class="column-count">2</span>
+                </div>
+                <div class="kanban-cards">
+                    <div class="complaint-card">
+                        <div class="card-id">C1</div>
+                        <div class="card-info">
+                            <span>🏠 Room 101</span>
+                            <span>👤 John Doe</span>
+                        </div>
+                        <div class="type-badge">Maintenance</div>
+                        <div class="card-description">Leaking faucet in bathroom needs immediate repair</div>
+                        <div class="card-date">📅 Oct 15, 2025 09:30 AM</div>
+                    </div>
+                    <div class="complaint-card">
+                        <div class="card-id">C4</div>
+                        <div class="card-info">
+                            <span>🏠 Room 403</span>
+                            <span>👤 Sarah Lee</span>
+                        </div>
+                        <div class="type-badge">Other</div>
+                        <div class="card-description">Air conditioning not working properly</div>
+                        <div class="card-date">📅 Oct 16, 2025 01:00 PM</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In Progress Column -->
+            <div class="kanban-column">
+                <div class="kanban-header progress">
+                    <h3>In Progress</h3>
+                    <span class="column-count">2</span>
+                </div>
+                <div class="kanban-cards">
+                    <div class="complaint-card">
+                        <div class="card-id">C2</div>
+                        <div class="card-info">
+                            <span>🏠 Room 205</span>
+                            <span>👤 Jane Smith</span>
+                        </div>
+                        <div class="type-badge">Noise</div>
+                        <div class="card-description">Loud noise from neighboring unit during late hours</div>
+                        <div class="card-date">📅 Oct 14, 2025 02:15 PM</div>
+                        <div class="last-update">📝 Updated: Oct 16, 2025 11:20 AM</div>
+                        <div class="records-title">Records</div>
+                        <div class="record-logs-container">
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 14, 2025 02:15 PM:</span>
+                                <span class="log-message">Complaint received from tenant</span>
+                            </div>
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 14, 2025 03:45 PM:</span>
+                                <span class="log-message">Investigation started</span>
+                            </div>
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 15, 2025 10:00 AM:</span>
+                                <span class="log-message">Contacted neighboring tenant</span>
+                            </div>
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 16, 2025 11:20 AM:</span>
+                                <span class="log-message">Following up with witness statement</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="complaint-card">
+                        <div class="card-id">C5</div>
+                        <div class="card-info">
+                            <span>🏠 Room 150</span>
+                            <span>👤 Mike Johnson</span>
+                        </div>
+                        <div class="type-badge">Neighbor</div>
+                        <div class="card-description">Parking space issue with adjacent tenant</div>
+                        <div class="card-date">📅 Oct 15, 2025 03:45 PM</div>
+                        <div class="last-update">📝 Updated: Oct 17, 2025 09:00 AM</div>
+                        <div class="records-title">Records</div>
+                        <div class="record-logs-container">
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 15, 2025 03:45 PM:</span>
+                                <span class="log-message">Parking complaint filed</span>
+                            </div>
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 15, 2025 04:30 PM:</span>
+                                <span class="log-message">Reviewed parking guidelines with both parties</span>
+                            </div>
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 16, 2025 02:00 PM:</span>
+                                <span class="log-message">Mediation session scheduled</span>
+                            </div>
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 17, 2025 09:00 AM:</span>
+                                <span class="log-message">Both parties agreed on parking arrangement</span>
+                            </div>
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 17, 2025 10:15 AM:</span>
+                                <span class="log-message">Documentation updated in system</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resolved Column -->
+            <div class="kanban-column">
+                <div class="kanban-header resolved">
+                    <h3>Resolved</h3>
+                    <span class="column-count">3</span>
+                </div>
+
+                <div class="kanban-cards">
+                    <!-- Complaint Card 1 -->
+                    <div class="complaint-card">
+                        <div class="card-header">
+                            <div class="card-id">C3</div>
+                            <button class="delete-btn">
+                                    <span class="material-symbols-rounded" style="font-size: 20px;">delete</span>
+                                    Delete
+                            </button>
+                        </div>
+
+                        <div class="card-info">
+                            <span>🏠 Room 302</span>
+                            <span>👤 Bob Wilson</span>
+                        </div>
+                        <div class="type-badge">Billing</div>
+                        <div class="card-description">Incorrect charges on monthly statement</div>
+                        <div class="card-date">📅 Oct 13, 2025 10:00 AM</div>
+                        <div class="last-update" style="color: #66BB6A;">✅ Resolved: Oct 17, 2025 03:45 PM</div>
+
+                        <div class="records-title">Records</div>
+                        <div class="record-logs-container">
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 13, 2025 10:00 AM:</span>
+                                <span class="log-message">Billing discrepancy reported</span>
+                            </div>
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 13, 2025 11:30 AM:</span>
+                                <span class="log-message">Finance team notified</span>
+                            </div>
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 15, 2025 09:00 AM:</span>
+                                <span class="log-message">Billing records reviewed and verified</span>
+                            </div>
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 17, 2025 02:00 PM:</span>
+                                <span class="log-message">Credit issued to tenant account</span>
+                            </div>
+                            <div class="record-log">
+                                <span class="log-timestamp">Oct 17, 2025 03:45 PM:</span>
+                                <span class="log-message">Tenant notified and confirmed resolution</span>
+                            </div>
+                        </div>
+                    </div>
+
+        <!-- Complaint Card 2 -->
+        <div class="complaint-card">
+            <div class="card-header">
+                <div class="card-id">C8</div>
+                <button class="delete-btn">
+                        <span class="material-symbols-rounded" style="font-size: 20px;">delete</span>
+                        Delete
+                </button>
+            </div>
+
+            <div class="card-info">
+                <span>🏠 Room 302</span>
+                <span>👤 Bob Wilson</span>
+            </div>
+            <div class="type-badge">Billing</div>
+            <div class="card-description">Incorrect charges on monthly statement</div>
+            <div class="card-date">📅 Oct 13, 2025 10:00 AM</div>
+            <div class="last-update" style="color: #66BB6A;">✅ Resolved: Oct 17, 2025 03:45 PM</div>
+
+            <div class="records-title">Records</div>
+            <div class="record-logs-container">
+                <div class="record-log">
+                    <span class="log-timestamp">Oct 13, 2025 10:00 AM:</span>
+                    <span class="log-message">Billing discrepancy reported</span>
+                </div>
+                <div class="record-log">
+                    <span class="log-timestamp">Oct 13, 2025 11:30 AM:</span>
+                    <span class="log-message">Finance team notified</span>
+                </div>
+                <div class="record-log">
+                    <span class="log-timestamp">Oct 15, 2025 09:00 AM:</span>
+                    <span class="log-message">Billing records reviewed and verified</span>
+                </div>
+                <div class="record-log">
+                    <span class="log-timestamp">Oct 17, 2025 02:00 PM:</span>
+                    <span class="log-message">Credit issued to tenant account</span>
+                </div>
+                <div class="record-log">
+                    <span class="log-timestamp">Oct 17, 2025 03:45 PM:</span>
+                    <span class="log-message">Tenant notified and confirmed resolution</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complaint Card 3 -->
+        <div class="complaint-card">
+            <div class="card-header">
+                <div class="card-id">C6</div>
+                <button class="delete-btn">
+                        <span class="material-symbols-rounded" style="font-size: 20px;">delete</span>
+                        Delete
+                </button>
+            </div>
+
+            <div class="card-info">
+                <span>🏠 Room 210</span>
+                <span>👤 Emily Davis</span>
+            </div>
+            <div class="type-badge">Maintenance</div>
+            <div class="card-description">Broken window lock needs replacement</div>
+            <div class="card-date">📅 Oct 12, 2025 08:30 AM</div>
+            <div class="last-update" style="color: #66BB6A;">✅ Resolved: Oct 16, 2025 02:00 PM</div>
+
+            <div class="records-title">Records</div>
+            <div class="record-logs-container">
+                <div class="record-log">
+                    <span class="log-timestamp">Oct 12, 2025 08:30 AM:</span>
+                    <span class="log-message">Window lock repair requested</span>
+                </div>
+                <div class="record-log">
+                    <span class="log-timestamp">Oct 12, 2025 09:15 AM:</span>
+                    <span class="log-message">Maintenance team assigned</span>
+                </div>
+                <div class="record-log">
+                    <span class="log-timestamp">Oct 14, 2025 02:30 PM:</span>
+                    <span class="log-message">Lock replacement scheduled</span>
+                </div>
+                <div class="record-log">
+                    <span class="log-timestamp">Oct 16, 2025 10:00 AM:</span>
+                    <span class="log-message">Repair work completed</span>
+                </div>
+                <div class="record-log">
+                    <span class="log-timestamp">Oct 16, 2025 02:00 PM:</span>
+                    <span class="log-message">Inspection passed and approved by tenant</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<!-- JavaScript -->
+<script>
+    // Function to switch between pages (for your nav system)
+    function showPage(pageName) {
+        document.querySelectorAll('.main-content').forEach(page => {
+            page.classList.add('page-hidden');
+        });
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.getElementById(pageName + '-page').classList.remove('page-hidden');
+        event.target.classList.add('active');
+    }
+
+    // Function to handle complaint form submission
+    function handleComplaint(event) {
+        event.preventDefault();
+        const complaintId = document.getElementById('complaint-id').value;
+        const status = document.getElementById('status').value;
+        const notes = document.getElementById('notes').value;
+
+        console.log('Complaint Submitted:', {
+            id: complaintId,
+            status: status,
+            notes: notes
+        });
+
+        alert(`Complaint ${complaintId} updated to "${status}" with notes: "${notes}"`);
+        event.target.reset();
+    }
+
+    // Delete button logic
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('delete-btn')) {
+            const card = e.target.closest('.complaint-card');
+            card.remove();
+        }
+    });
+</script>

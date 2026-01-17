@@ -1,0 +1,476 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #F3F8FF 0%, #E8F4FE 100%);
+    color: #0a1128;
+}
+
+/* ──────────────── MAIN CONTENT ──────────────── */
+.main-content {
+    padding: 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.greeting {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #0a1128, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 30px 0 20px 0;
+    color: #0a1128;
+}
+
+/* ──────────────── MANAGE COMPLAINTS PAGE ──────────────── */
+/* Layout container for both boxes */
+.top-section {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    /* makes it responsive */
+}
+
+/* Shared style for both containers */
+.handle-menu,
+.filter-container {
+    background: white;
+    border: 2px solid #bbdefb;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    flex: 1;
+    /* both share width equally */
+    min-width: 380px;
+}
+
+/* Titles */
+.menu-title,
+.filter-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0a1128;
+    margin-bottom: 20px;
+}
+
+/* Handle Complaint form layout */
+.menu-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Form inputs */
+.form-group,
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 160px;
+}
+
+.notes-group {
+    flex: 2;
+}
+
+.form-group label,
+.filter-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0a1128;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea,
+.filter-group input,
+.filter-group select {
+    padding: 10px 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #0a1128;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus,
+.filter-group input:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: #42a5f5;
+    box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.1);
+}
+
+.form-group textarea {
+    resize: none;
+    height: 46px;
+}
+
+/* dropdown select */
+.form-group select,
+.filter-group select {
+    appearance: none; /* remove default OS arrow */
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%2342a5f5" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 14px;
+    cursor: pointer;
+}
+
+.date-picker-wrapper::after {
+    color: #3b82f6; /* Change this to any color you want */
+}
+
+/* Hover state */
+.form-group select:hover,
+.filter-group select:hover {
+    border-color: #90caf9;
+}
+
+/* Focused state */
+.form-group select:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: #42a5f5;
+    box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.15);
+}
+
+/* Submit button */
+.submit-btn {
+    background: linear-gradient(135deg, #42a5f5, #2196F3);
+    color: white;
+    padding: 12px 20px;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: 46px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(66, 165, 245, 0.3);
+}
+
+/* Filter form grid */
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+}
+
+/* ──────────────── KANBAN COLUMN ──────────────── */
+.kanban-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 30px;
+    animation: fadeIn 0.6s ease;
+}
+
+.kanban-column {
+    background: white;
+    border-radius: 20px;
+    padding: 0;
+    min-height: 400px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.kanban-column:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.kanban-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.kanban-header.pending {
+    background: linear-gradient(135deg, #FFF4E6, #FFECCC);
+    border-bottom: 3px solid #FFC75F;
+}
+
+.kanban-header.progress {
+    background: linear-gradient(135deg, #E3F5FF, #CCE5FF);
+    border-bottom: 3px solid #7FCBEF;
+}
+
+.kanban-header.resolved {
+    background: linear-gradient(135deg, #E8F5E9, #D4EDDA);
+    border-bottom: 3px solid #66BB6A;
+}
+
+.kanban-header h3 {
+    font-size: 18px;
+    color: #0a1128;
+}
+
+.column-count {
+    background: #0a1128;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.kanban-cards {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    flex: 1;
+    max-height: 500px;
+}
+
+.kanban-cards::-webkit-scrollbar {
+    width: 6px;
+}
+
+.kanban-cards::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.kanban-cards::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+}
+
+.kanban-cards::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #ff4d4f;
+    background: rgba(255, 77, 79, 0.2);
+    border: 1px solid #ff4d4f;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.delete-btn:hover {
+    background: #ff4d4f; /* solid red */
+    color: white;
+    transform: scale(1.05);
+}
+
+.complaint-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.complaint-card:hover {
+    border-color: #42a5f5;
+    box-shadow: 0 6px 16px rgba(66, 165, 245, 0.15);
+    transform: translateY(-3px);
+}
+
+.complaint-card:hover .delete-btn {
+    opacity: 1;
+}
+
+.card-id {
+    display: inline-block;
+    background: linear-gradient(135deg, #42a5f5, #2196F3);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-info {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #0a1128;
+    font-weight: 500;
+}
+
+.type-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #E3F5FF, #D1E7FF);
+    color: #0a1128;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    border-left: 3px solid #42a5f5;
+}
+
+
+.records-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.record-logs-container {
+    margin-bottom: 12px;
+    max-height: 120px;
+    overflow-y: auto;
+    border-radius: 10px;
+    background: #f9fafb;
+    padding: 10px;
+}
+
+.record-logs-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.record-logs-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.record-logs-container::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 2px;
+}
+
+.record-log {
+    font-size: 12px;
+    color: #4b5563;
+    padding: 6px 0;
+    border-bottom: 1px solid #e5e7eb;
+    line-height: 1.4;
+}
+
+.record-log:last-child {
+    border-bottom: none;
+}
+
+.log-timestamp {
+    font-weight: 600;
+    color: #0a1128;
+}
+
+.log-message {
+    color: #6b7280;
+}
+
+.card-description {
+    font-size: 14px;
+    color: #4b5563;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.card-date {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.last-update {
+    font-size: 12px;
+    color: #7FCBEF;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.page-hidden {
+    display: none;
+}
+
+/* ──────────────── ANIMATIONS ──────────────── */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+    }
+
+    .greeting {
+        font-size: 24px;
+    }
+
+    .menu-form,
+    .filter-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .kanban-container {
+        grid-template-columns: 1fr;
+    }
+}

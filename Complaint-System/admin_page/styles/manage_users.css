@@ -1,0 +1,611 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #F3F8FF 0%, #E8F4FE 100%);
+    color: #0a1128;
+}
+
+/* ──────────────── MAIN CONTENT ──────────────── */
+.main-content {
+    padding: 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.greeting {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #0a1128, #3B82F6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 30px 0 20px 0;
+    color: #0a1128;
+}
+
+/* ──────────────── CONTROLS SECTION ──────────────── */
+.controls {
+    background: white;
+    border: 2px solid #bbdefb;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+
+/* Single Line Controls */
+.filter-grid {
+    display: flex;
+    gap: 16px;
+    align-items: flex-end;
+    flex-wrap: nowrap;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 180px;
+}
+
+.filter-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0a1128;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.search-wrapper {
+    position: relative;
+    flex: 2;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #42a5f5;
+    pointer-events: none;
+    font-size: 20px;
+}
+
+.filter-group input {
+    padding: 10px 12px 10px 40px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #0a1128;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.filter-group select {
+    padding: 10px 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #0a1128;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-color: #fff;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%2342a5f5" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 14px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+    outline: none;
+    border-color: #42a5f5;
+    box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.1);
+}
+
+.filter-group select:hover {
+    border-color: #90caf9;
+}
+
+.add-admin-btn {
+    background: linear-gradient(135deg, #42a5f5, #2196F3);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.add-admin-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(66, 165, 245, 0.3);
+}
+
+/* ──────────────── MODAL STYLES ──────────────── */
+
+/* Modal Overlay */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0; /* shorthand for top:0; left:0; bottom:0; right:0; */
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+/* Modal Container */
+.modal {
+    background: #fff;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease forwards;
+}
+
+
+/* Modal Header */
+.modal-header {
+    padding: 24px 20px 16px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0a1128;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.modal-title .material-symbols-rounded {
+    font-size: 28px;
+    color: #42a5f5;
+}
+
+.modal-subtitle {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Form Groups */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0a1128;
+}
+
+.form-group label .material-symbols-rounded {
+    font-size: 18px;
+    color: #42a5f5;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #bbdefb;
+    border-radius: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #0a1128;
+    background: #f3f8ff;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #42a5f5;
+    box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.1);
+}
+
+/* Error Message */
+.error-message {
+    display: none;
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.error-message.active {
+    display: block;
+}
+
+/* Modal Footer */
+.modal-footer {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* Buttons */
+.submit-btn, .cancel-btn {
+    border: none;
+    border-radius: 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 24px;
+    height: 42px;
+    transition: all 0.3s ease;
+}
+
+/* Save Button */
+.submit-btn {
+    background: linear-gradient(135deg, #42a5f5, #2196f3);
+    color: #fff;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(66, 165, 245, 0.4);
+}
+
+/* Cancel Button */
+.cancel-btn {
+    background: #fff;
+    color: #6b7280;
+    border: 2px solid #e5e7eb;
+}
+
+.cancel-btn:hover {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+    transform: translateY(-2px);
+}
+
+/* Small Note for Password Requirements */
+.form-group small {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+
+/* ──────────────── KANBAN / USERS CARDS ──────────────── */
+.kanban-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 30px;
+}
+
+.kanban-column {
+    background: white;
+    border-radius: 20px;
+    padding: 0;
+    min-height: 400px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.kanban-column:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.kanban-header {
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.kanban-header.admins {
+    background: linear-gradient(135deg, #FFF4E6, #FFECCC);
+    border-bottom: 3px solid #FFC75F;
+}
+
+.kanban-header.users {
+    background: linear-gradient(135deg, #E3F5FF, #CCE5FF);
+    border-bottom: 3px solid #7FCBEF;
+}
+
+.kanban-header h3 {
+    font-size: 18px;
+    color: #0a1128;
+}
+
+.column-count {
+    background: #0a1128;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.kanban-cards {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    flex: 1;
+    max-height: 600px;
+}
+
+.kanban-cards::-webkit-scrollbar {
+    width: 6px;
+}
+
+.kanban-cards::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.kanban-cards::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 3px;
+}
+
+.kanban-cards::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* User Card Styling */
+.user-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    position: relative;
+    animation: fadeInScale 0.4s ease backwards;
+}
+
+.user-card:hover {
+    border-color: #42a5f5;
+    box-shadow: 0 6px 16px rgba(66, 165, 245, 0.15);
+    transform: translateY(-3px);
+}
+
+.user-card:hover .delete-btn {
+    opacity: 1;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.user-id-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #42a5f5, #2196F3);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.delete-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #ff4d4f;
+    background: rgba(255, 77, 79, 0.1);
+    border: 1px solid #ff4d4f;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.delete-btn:hover {
+    background: #ff4d4f;
+    color: white;
+    transform: scale(1.05);
+}
+
+.delete-btn:disabled {
+    background: rgba(209, 213, 219, 0.3);
+    border-color: #d1d5db;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.delete-btn:disabled:hover {
+    transform: none;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+}
+
+.info-icon {
+    color: #42a5f5;
+    font-size: 18px;
+    min-width: 20px;
+    margin-top: 2px;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #6b7280;
+    min-width: 90px;
+}
+
+.info-value {
+    color: #0a1128;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.no-users {
+    text-align: center;
+    padding: 40px 20px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* ──────────────── ANIMATIONS ──────────────── */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ──────────────── RESPONSIVE ──────────────── */
+@media (max-width: 1200px) {
+    .filter-grid {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 1024px) {
+    .kanban-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+    }
+
+    .greeting {
+        font-size: 24px;
+    }
+
+    .filter-grid {
+        flex-direction: column;
+    }
+
+    .filter-group,
+    .search-wrapper {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .add-admin-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .info-label {
+        min-width: 70px;
+    }
+
+    .modal {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .modal-footer {
+        flex-direction: column;
+    }
+
+    .submit-btn,
+    .cancel-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

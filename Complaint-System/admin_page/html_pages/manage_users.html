@@ -1,0 +1,642 @@
+<link rel="stylesheet" href="styles/manage_users.css">
+
+    <!-- Manage Users Page -->
+    <div id="users-page" class="main-content">
+        <h1 class="greeting">Manage Users</h1>
+        <p class="subtitle">View and manage all registered users in the system</p>
+
+        <!-- Control Wrapper -->
+        <div class="top-section">
+            <!-- Controls Container -->
+            <div class="controls">
+                <div class="filter-grid">
+                    <!-- Search -->
+                    <div class="filter-group">
+                        <label for="searchInput">Search by Name</label>
+                        <div class="search-wrapper">
+                            <span class="material-symbols-rounded search-icon">search</span>
+                            <input type="text" id="searchInput" placeholder="Search by name...">
+                        </div>
+                    </div>
+
+                    <!-- Sort by Alphabetical Order -->
+                    <div class="filter-group">
+                        <label for="sortAlphabetSelect">Sort by Name</label>
+                        <select id="sortAlphabetSelect">
+                            <option value="az">A to Z</option>
+                            <option value="za">Z to A</option>
+                        </select>
+                    </div>
+
+                    <!-- Sort by Room Number -->
+                    <div class="filter-group">
+                        <label for="sortRoomnumberselect">Sort by Room Number</label>
+                        <select id="sortRoomnumberselect">
+                            <option value="">All Rooms</option>
+                            <optgroup label="1st Floor">
+                                <option>101</option>
+                                <option>102</option>
+                                <option>103</option>
+                                <option>104</option>
+                                <option>105</option>
+                                <option>106</option>
+                                <option>107</option>
+                                <option>108</option>
+                                <option>109</option>
+                                <option>110</option>
+                            </optgroup>
+                            <optgroup label="2nd Floor">
+                                <option>201</option>
+                                <option>202</option>
+                                <option>203</option>
+                                <option>204</option>
+                                <option>205</option>
+                                <option>206</option>
+                                <option>207</option>
+                                <option>208</option>
+                                <option>209</option>
+                                <option>210</option>
+                            </optgroup>
+                            <optgroup label="3rd Floor">
+                                <option>301</option>
+                                <option>302</option>
+                                <option>303</option>
+                                <option>304</option>
+                                <option>305</option>
+                                <option>306</option>
+                                <option>307</option>
+                                <option>308</option>
+                                <option>309</option>
+                                <option>310</option>
+                            </optgroup>
+                            <optgroup label="4th Floor">
+                                <option>401</option>
+                                <option>402</option>
+                                <option>403</option>
+                                <option>404</option>
+                                <option>405</option>
+                                <option>406</option>
+                                <option>407</option>
+                                <option>408</option>
+                                <option>409</option>
+                                <option>410</option>
+                            </optgroup>
+                            <optgroup label="5th Floor">
+                                <option>501</option>
+                                <option>502</option>
+                                <option>503</option>
+                                <option>504</option>
+                                <option>505</option>
+                                <option>506</option>
+                                <option>507</option>
+                                <option>508</option>
+                                <option>509</option>
+                                <option>510</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- Sort by Date -->
+                    <div class="filter-group">
+                        <label for="sortDateSelect">Sort by Date Joined</label>
+                        <select id="sortDateSelect">
+                            <option value="newest">Newest to Oldest</option>
+                            <option value="oldest">Oldest to Newest</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="add-admin-btn" onclick="openAddAdminModal()">
+                    <span class="material-symbols-rounded">person_add</span>
+                    Add New Admin
+                </button>
+            </div>
+        </div>
+
+        <!-- Add New Admin Modal -->
+        <div class="modal-overlay" id="addAdminModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="modal-title">
+                        <span class="material-symbols-rounded">person_add</span>
+                        Add New Admin
+                    </h2>
+                    <p class="modal-subtitle">Add new administrator account. Please handle everything with transparency and responsibility.</p>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="profileName">
+                            <span class="material-symbols-rounded">badge</span>
+                            Name
+                        </label>
+                        <input type="text" id="profileName" placeholder="Enter full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profileEmail">
+                            <span class="material-symbols-rounded">email</span>
+                            Email
+                        </label>
+                        <input type="email" id="profileEmail" placeholder="admin@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profilePhone">
+                            <span class="material-symbols-rounded">phone</span>
+                            Phone Number
+                        </label>
+                        <input type="tel" id="profilePhone" placeholder="09123456789">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profilePassword">
+                            <span class="material-symbols-rounded">lock</span>
+                            Password
+                        </label>
+                        <input type="password" id="profilePassword">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="profileConfirmPassword">
+                            <span class="material-symbols-rounded">lock_open</span>
+                            Confirm Password
+                        </label>
+                        <input type="password" id="profileConfirmPassword">
+                        <small style="color: #666; font-size: 12px; margin-top: 4px; display: block;">
+                            Must be at least 8 characters with uppercase, lowercase, number, and special character
+                        </small>
+                    </div>
+
+                    <div class="error-message" id="editError"></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="submit-btn" onclick="saveNewAdmin()">
+                        <span class="material-symbols-rounded">check</span> Save
+                    </button>
+                    <button class="cancel-btn" onclick="closeAddAdminModal()">
+                        <span class="material-symbols-rounded">close</span> Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kanban Columns -->
+        <h2 class="section-title">Users Overview</h2>
+        <div class="kanban-container">
+        
+            <!-- Admins Column -->
+            <div class="kanban-column">
+                <div class="kanban-header admins">
+                    <h3>Administrators</h3>
+                    <span class="column-count">2</span>
+                </div>
+                <div class="kanban-cards">
+                    <!-- Admin Card 1 -->
+                    <div class="user-card">
+                        <button class="delete-btn" disabled>
+                            <span class="material-symbols-rounded" style="font-size: 20px;">delete</span>
+                            Remove
+                        </button>
+                        <div class="card-header">
+                            <span class="user-id-badge">ID: 001</span>
+                        </div>
+                        <div class="user-info">
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">person</span>
+                                <span class="info-label">Name:</span>
+                                <span class="info-value">John Doe</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">email</span>
+                                <span class="info-label">Email:</span>
+                                <span class="info-value">john.doe@email.com</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">phone</span>
+                                <span class="info-label">Phone:</span>
+                                <span class="info-value">+63 912 345 6789</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">calendar_today</span>
+                                <span class="info-label">Date Joined:</span>
+                                <span class="info-value">Nov 08, 2025 09:30 AM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Admin Card 2 -->
+                    <div class="user-card">
+                        <button class="delete-btn" disabled>
+                            <span class="material-symbols-rounded" style="font-size: 20px;">delete</span>
+                            Remove
+                        </button>
+                        <div class="card-header">
+                            <span class="user-id-badge">ID: 007</span>
+                        </div>
+                        <div class="user-info">
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">person</span>
+                                <span class="info-label">Name:</span>
+                                <span class="info-value">Maria Garcia</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">email</span>
+                                <span class="info-label">Email:</span>
+                                <span class="info-value">maria.garcia@email.com</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">phone</span>
+                                <span class="info-label">Phone:</span>
+                                <span class="info-value">+63 978 901 2345</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">calendar_today</span>
+                                <span class="info-label">Date Joined:</span>
+                                <span class="info-value">Nov 01, 2025 01:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users Column -->
+            <div class="kanban-column">
+                <div class="kanban-header users">
+                    <h3>Users</h3>
+                    <span class="column-count">5</span>
+                </div>
+                <div class="kanban-cards">
+                    <!-- User Card 1 -->
+                    <div class="user-card">
+                        <button class="delete-btn">
+                            <span class="material-symbols-rounded" style="font-size: 20px;">delete</span>
+                            Remove
+                        </button>
+                        <div class="card-header">
+                            <span class="user-id-badge">ID: 002</span>
+                        </div>
+                        <div class="user-info">
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">person</span>
+                                <span class="info-label">Name:</span>
+                                <span class="info-value">Jane Smith</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">email</span>
+                                <span class="info-label">Email:</span>
+                                <span class="info-value">jane.smith@email.com</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">phone</span>
+                                <span class="info-label">Phone:</span>
+                                <span class="info-value">+63 923 456 7890</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">home</span>
+                                <span class="info-label">Room No.:</span>
+                                <span class="info-value">205</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">calendar_today</span>
+                                <span class="info-label">Date Joined:</span>
+                                <span class="info-value">Nov 07, 2025 02:15 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Card 2 -->
+                    <div class="user-card">
+                        <button class="delete-btn">
+                            <span class="material-symbols-rounded" style="font-size: 20px;">delete</span>
+                            Remove
+                        </button>
+                        <div class="card-header">
+                            <span class="user-id-badge">ID: 003</span>
+                        </div>
+                        <div class="user-info">
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">person</span>
+                                <span class="info-label">Name:</span>
+                                <span class="info-value">Mike Johnson</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">email</span>
+                                <span class="info-label">Email:</span>
+                                <span class="info-value">mike.johnson@email.com</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">phone</span>
+                                <span class="info-label">Phone:</span>
+                                <span class="info-value">+63 934 567 8901</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">home</span>
+                                <span class="info-label">Room No.:</span>
+                                <span class="info-value">312</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">calendar_today</span>
+                                <span class="info-label">Date Joined:</span>
+                                <span class="info-value">Nov 06, 2025 11:45 AM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Card 3 -->
+                    <div class="user-card">
+                        <button class="delete-btn">
+                            <span class="material-symbols-rounded" style="font-size: 20px;">delete</span>
+                            Remove
+                        </button>
+                        <div class="card-header">
+                            <span class="user-id-badge">ID: 004</span>
+                        </div>
+                        <div class="user-info">
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">person</span>
+                                <span class="info-label">Name:</span>
+                                <span class="info-value">Sarah Williams</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">email</span>
+                                <span class="info-label">Email:</span>
+                                <span class="info-value">sarah.williams@email.com</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">phone</span>
+                                <span class="info-label">Phone:</span>
+                                <span class="info-value">+63 945 678 9012</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">home</span>
+                                <span class="info-label">Room No.:</span>
+                                <span class="info-value">418</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">calendar_today</span>
+                                <span class="info-label">Date Joined:</span>
+                                <span class="info-value">Nov 05, 2025 04:20 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Card 4 -->
+                    <div class="user-card">
+                        <button class="delete-btn">
+                            <span class="material-symbols-rounded" style="font-size: 20px;">delete</span>
+                            Remove
+                        </button>
+                        <div class="card-header">
+                            <span class="user-id-badge">ID: 005</span>
+                        </div>
+                        <div class="user-info">
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">person</span>
+                                <span class="info-label">Name:</span>
+                                <span class="info-value">David Brown</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">email</span>
+                                <span class="info-label">Email:</span>
+                                <span class="info-value">david.brown@email.com</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">phone</span>
+                                <span class="info-label">Phone:</span>
+                                <span class="info-value">+63 956 789 0123</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">home</span>
+                                <span class="info-label">Room No.:</span>
+                                <span class="info-value">523</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">calendar_today</span>
+                                <span class="info-label">Date Joined:</span>
+                                <span class="info-value">Nov 04, 2025 10:00 AM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Card 5 -->
+                    <div class="user-card">
+                        <button class="delete-btn">
+                            <span class="material-symbols-rounded" style="font-size: 20px;">delete</span>
+                            Remove
+                        </button>
+                        <div class="card-header">
+                            <span class="user-id-badge">ID: 006</span>
+                        </div>
+                        <div class="user-info">
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">person</span>
+                                <span class="info-label">Name:</span>
+                                <span class="info-value">Emily Davis</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">email</span>
+                                <span class="info-label">Email:</span>
+                                <span class="info-value">emily.davis@email.com</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">phone</span>
+                                <span class="info-label">Phone:</span>
+                                <span class="info-value">+63 967 890 1234</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">home</span>
+                                <span class="info-label">Room No.:</span>
+                                <span class="info-value">614</span>
+                            </div>
+                            <div class="info-row">
+                                <span class="material-symbols-rounded info-icon">calendar_today</span>
+                                <span class="info-label">Date Joined:</span>
+                                <span class="info-value">Nov 03, 2025 03:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- JavaScript -->
+<script>
+    // Function to switch between pages (for your nav system)
+    function showPage(pageName) {
+        document.querySelectorAll('.main-content').forEach(page => {
+            page.classList.add('page-hidden');
+        });
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.getElementById(pageName + '-page').classList.remove('page-hidden');
+        event.target.classList.add('active');
+    }
+
+    // Validation Functions
+    function validateName(name) {
+        if (!name || name.trim().length === 0) {
+            return 'Name is required';
+        }
+        if (name.trim().length < 2) {
+            return 'Name must be at least 2 characters long';
+        }
+        if (name.trim().length > 100) {
+            return 'Name must not exceed 100 characters';
+        }
+        if (!/^[a-zA-Z\s'-]+$/.test(name)) {
+            return 'Name can only contain letters, spaces, hyphens, and apostrophes';
+        }
+        return null;
+    }
+
+    function validateEmail(email) {
+        if (!email || email.trim().length === 0) {
+            return 'Email is required';
+        }
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            return 'Please enter a valid email address';
+        }
+        return null;
+    }
+
+    function validatePhone(phone) {
+        if (!phone || phone.trim().length === 0) {
+            return 'Phone number is required';
+        }
+        const digitsOnly = phone.replace(/\D/g, '');
+        if (digitsOnly.length > 11) {
+            return 'Phone number must not exceed 11 digits';
+        }
+        const phoneRegex = /^(09|\+639)\d{9}$/;
+        if (!phoneRegex.test(digitsOnly)) {
+            return 'Please enter a valid Philippine phone number (e.g., 09123456789)';
+        }
+        return null;
+    }
+    
+    function validatePassword(password, confirmPassword) {
+        if (!password || password.trim().length === 0) {
+            return 'Password is required';
+        }
+        if (password.length < 8) {
+            return 'Password must be at least 8 characters';
+        }
+        if (!/[A-Z]/.test(password)) {
+            return 'Password must contain at least one uppercase letter';
+        }
+        if (!/[a-z]/.test(password)) {
+            return 'Password must contain at least one lowercase letter';
+        }
+        if (!/[0-9]/.test(password)) {
+            return 'Password must contain at least one number';
+        }
+        if (!/[!@#$%^&*(),.?":{}|<>_]/.test(password)) {
+            return 'Password must contain at least one special character';
+        }
+        if (!confirmPassword || confirmPassword.trim().length === 0) {
+            return 'Please confirm your password';
+        }
+        if (password !== confirmPassword) {
+            return 'Passwords do not match';
+        }
+        return null;
+    }
+
+    // Open and Close Modal
+    function openAddAdminModal() {
+        document.getElementById('addAdminModal').classList.add('active');
+    }
+
+    function closeAddAdminModal() {
+        document.getElementById('addAdminModal').classList.remove('active');
+        clearError();
+    }
+
+    // Show / Clear Error
+    function showError(message) {
+        const errorDiv = document.getElementById('editError');
+        errorDiv.textContent = message;
+        errorDiv.classList.add('active');
+    }
+
+    function clearError() {
+        const errorDiv = document.getElementById('editError');
+        errorDiv.textContent = '';
+        errorDiv.classList.remove('active');
+    }
+
+    function saveNewAdmin() {
+        clearError();
+
+        const name = document.getElementById('profileName').value;
+        const email = document.getElementById('profileEmail').value;
+        const phone = document.getElementById('profilePhone').value;
+        const password = document.getElementById('profilePassword').value;
+        const confirmPassword = document.getElementById('profileConfirmPassword').value;
+
+        const nameError = validateName(name);
+        if (nameError) return showError(nameError);
+
+        const emailError = validateEmail(email);
+        if (emailError) return showError(emailError);
+
+        const phoneError = validatePhone(phone);
+        if (phoneError) return showError(phoneError);
+
+        const passwordError = validatePassword(password, confirmPassword);
+        if (passwordError) return showError(passwordError);
+
+        alert('Admin saved successfully!');
+        closeAddAdminModal();
+
+        // Clear input fields
+        document.getElementById('profileName').value = '';
+        document.getElementById('profileEmail').value = '';
+        document.getElementById('profilePhone').value = '';
+        document.getElementById('profilePassword').value = '';
+        document.getElementById('profileConfirmPassword').value = '';
+    }
+
+    // Delete button logic
+    document.addEventListener('click', function (e) {
+        if (e.target.classList.contains('delete-btn') && !e.target.disabled) {
+            const card = e.target.closest('.user-card');
+            if (confirm('Are you sure you want to remove this user?')) {
+                card.remove();
+            }
+        }
+    });
+
+    // Smooth animations
+    const deleteButtons = document.querySelectorAll('.delete-btn:not(:disabled)');
+    deleteButtons.forEach(btn => {
+        btn.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+        });
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+
+    // Search input animation
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('focus', function() {
+        this.parentElement.style.transform = 'scale(1.02)';
+    });
+    searchInput.addEventListener('blur', function() {
+        this.parentElement.style.transform = 'scale(1)';
+    });
+
+    // Card stagger animation on load
+    window.addEventListener('load', function() {
+        const cards = document.querySelectorAll('.user-card');
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.05}s`;
+        });
+    });
+</script>

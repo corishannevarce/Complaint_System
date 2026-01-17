@@ -1,0 +1,385 @@
+    /* ========== GLOBAL RESET ========== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #F3F8FF;
+      color: #0a1128;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ========== MAIN CONTAINER ========== */
+    .container {
+      display: flex;
+      width: 100%;
+      height: 100vh;
+      background: white;
+      overflow: hidden;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ========== LEFT PANEL ========== */
+    .left-panel {
+      flex: 1;
+      background: #0a1128;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 10px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .logo-text-complaint {
+      color: #42a5f5;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .logo-text-desk {
+      color: #ffab00;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    /* ========== LEFT CONTENT ========== */
+    .left-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      flex: 1;
+      width: 100%;
+    }
+
+    .background-image {
+      max-width: 550px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      align-self: center;
+    }
+
+    .tagline {
+      font-size: 26px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.95);
+      line-height: 1.6;
+      text-align: left;
+      align-items: flex-start;
+    }
+
+    /* ========== RIGHT PANEL ========== */
+    .right-panel {
+      flex: 1;
+      background: white;
+      padding: 60px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* ========== FORM CONTAINER ========== */
+    .form-container {
+      max-width: 450px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .form-section { display: none; }
+    .form-section.active { display: block; }
+
+    /* ========== HEADER TEXT ========== */
+    .header-text {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header-text h1 {
+      font-size: 36px;
+      font-weight: 600;
+      color: #0a1128;
+    }
+
+    .header-text p {
+      color: #666;
+      font-size: 15px;
+    }
+
+    /* ========== FORM GROUPS ========== */
+    .form-group {
+      margin-bottom: 5px;
+    }
+
+    .form-group label {
+      font-family: 'Poppins', sans-serif;
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      padding: 14px 16px;
+      font-size: 16px;
+      border: 1px solid #e0e0e0;
+      background: #f8f9fa;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #42a5f5;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.1);
+    }
+
+    /* Error state for inputs */
+    .form-group input.error {
+      border-color: #ef4444;
+      background: #fef2f2;
+    }
+
+    .error-message {
+      font-size: 14px;
+      color: #ef4444;
+      margin-top: 5px;
+      min-height: 14px;
+      display: block;
+    }
+
+    /* ========== CHECKBOX ========== */
+    .checkbox-group {
+      display: flex;
+      justify-content: space-between;
+      margin: 10px 0;
+    }
+
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #0a1128;
+      border-radius: 4px;
+      transition: 0.25s;
+      position: relative;
+    }
+
+    .checkbox-group input[type="checkbox"]:checked {
+      background: #42a5f5;
+      border-color: #42a5f5;
+    }
+
+    .checkbox-group input[type="checkbox"]:checked::after {
+      content: "✔";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -58%);
+      color: white;
+      font-size: 14px;
+    }
+
+    /* ========== LINKS ========== */
+    .forgot-password,
+    .back-to-login a {
+      color: #42a5f5;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .forgot-password:hover,
+    .back-to-login a:hover {
+      text-decoration: underline;
+    }
+
+    /* ========== BUTTON ========== */
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: #0a1128;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 20px 0;
+    }
+
+    .submit-btn:hover {
+      background: #1a234f;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .submit-btn:disabled {
+      background: #ccc;
+    }
+
+    /* ========== TOGGLE FORM TEXT ========== */
+    .toggle-form {
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .toggle-form a {
+      color: #42a5f5;
+      font-weight: 600;
+    }
+
+    /* ========== PASSWORD TOGGLE - ADD THIS TO YOUR EXISTING CSS ========== */
+
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-wrapper input {
+    padding-right: 45px !important;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.toggle-password:hover {
+    color: #42a5f5;
+}
+
+.toggle-password .material-symbols-rounded {
+    font-size: 22px;
+    user-select: none;
+}
+
+    /* ========== FORM SECTIONS ========== */
+.form-section {
+    display: none;
+}
+
+.form-section.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+
+
+    /* ========== ANIMATION ========== */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    .shake {
+      animation: shake 0.3s;
+    }
+
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+          transform: translateY(10px);
+      }
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+    /* ===================================================== */
+    /* =============== RESPONSIVE BREAKPOINTS ============== */
+    /* ===================================================== */
+
+    @media (max-width: 1200px) {
+      .header-text h1 { font-size: 32px; }
+      .left-panel { padding: 50px 40px; }
+    }
+
+    @media (max-width: 992px) {
+      .container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        margin: 10px;
+      }
+
+      .left-panel {
+        padding: 40px 30px;
+        align-items: center;
+        text-align: center;
+        min-height: 350px;
+      }
+
+      .tagline { text-align: center; }
+    }
+
+    @media (max-width: 768px) {
+      .header-text h1 { font-size: 26px; }
+      .left-image { max-width: 280px; }
+      .right-panel { padding: 40px 30px; }
+    }
+
+    @media (max-width: 576px) {
+      .left-panel { margin: 0; border-radius: 0; }
+      .right-panel { margin: 0; padding: 30px 20px; }
+      .form-container { max-width: 100%; }
+    }
+
+    @media (max-width: 400px) {
+      .header-text h1 { font-size: 22px; }
+      .tagline { font-size: 16px; }
+      .submit-btn { font-size: 14px; padding: 12px; }
+      .form-group input { font-size: 14px; padding: 12px; }
+    }

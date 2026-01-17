@@ -1,0 +1,225 @@
+<link rel="stylesheet" href="styles/dashboard.css">
+
+<div class="main-content">
+    <h1 class="greeting">Good Morning, Admin!</h1>
+    <p class="subtitle">Welcome to your complaint management dashboard</p>
+
+    <h2 class="section-title">Summary</h2>
+    <div class="stats-container">
+        <div class="stat-card all">
+            <div class="stat-title">All Complaints</div>
+            <div class="stat-number">24</div>
+        </div>
+        <div class="stat-card pending">
+            <div class="stat-title">Pending</div>
+            <div class="stat-number">8</div>
+        </div>
+        <div class="stat-card progress">
+            <div class="stat-title">In Progress</div>
+            <div class="stat-number">6</div>
+        </div>
+        <div class="stat-card resolved">
+            <div class="stat-title">Resolved</div>
+            <div class="stat-number">10</div>
+        </div>
+        <div class="stat-card recent">
+            <div class="stat-title">Recent (7 days)</div>
+            <div class="stat-number">5</div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Recent Complaints</h2>
+    <div class="kanban-container">
+        <!-- Pending Column -->
+        <div class="kanban-column">
+            <div class="kanban-header pending">
+                <h3>Pending</h3>
+                <span class="column-count">2</span>
+            </div>
+            <div class="kanban-cards">
+                <div class="complaint-card">
+                    <div class="card-id">C1</div>
+                    <div class="card-info">
+                        <span>🏠 Room 101</span>
+                        <span>👤 John Doe</span>
+                    </div>
+                    <div class="type-badge">Maintenance</div>
+                    <div class="card-description">Leaking faucet in bathroom needs immediate repair</div>
+                    <div class="card-date">📅 Oct 15, 2025 09:30 AM</div>
+                </div>
+                <div class="complaint-card">
+                    <div class="card-id">C4</div>
+                    <div class="card-info">
+                        <span>🏠 Room 403</span>
+                        <span>👤 Sarah Lee</span>
+                    </div>
+                    <div class="type-badge">Other</div>
+                    <div class="card-description">Air conditioning not working properly</div>
+                    <div class="card-date">📅 Oct 16, 2025 01:00 PM</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- In Progress Column -->
+        <div class="kanban-column">
+            <div class="kanban-header progress">
+                <h3>In Progress</h3>
+                <span class="column-count">2</span>
+            </div>
+            <div class="kanban-cards">
+                <div class="complaint-card">
+                    <div class="card-id">C2</div>
+                    <div class="card-info">
+                        <span>🏠 Room 205</span>
+                        <span>👤 Jane Smith</span>
+                    </div>
+                    <div class="type-badge">Noise</div>
+                    <div class="card-description">Loud noise from neighboring unit during late hours</div>
+                    <div class="card-date">📅 Oct 14, 2025 02:15 PM</div>
+                    <div class="last-update">📝 Updated: Oct 16, 2025 11:20 AM</div>
+                    <div class="records-title">Records</div>
+                    <div class="record-logs-container">
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 14, 2025 02:15 PM:</span>
+                            <span class="log-message">Complaint received from tenant</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 14, 2025 03:45 PM:</span>
+                            <span class="log-message">Investigation started</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 15, 2025 10:00 AM:</span>
+                            <span class="log-message">Contacted neighboring tenant</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 16, 2025 11:20 AM:</span>
+                            <span class="log-message">Following up with witness statement</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="complaint-card">
+                    <div class="card-id">C5</div>
+                    <div class="card-info">
+                        <span>🏠 Room 150</span>
+                        <span>👤 Mike Johnson</span>
+                    </div>
+                    <div class="type-badge">Neighbor</div>
+                    <div class="card-description">Parking space issue with adjacent tenant</div>
+                    <div class="card-date">📅 Oct 15, 2025 03:45 PM</div>
+                    <div class="last-update">📝 Updated: Oct 17, 2025 09:00 AM</div>
+                    <div class="records-title">Records</div>
+                    <div class="record-logs-container">
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 15, 2025 03:45 PM:</span>
+                            <span class="log-message">Parking complaint filed</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 15, 2025 04:30 PM:</span>
+                            <span class="log-message">Reviewed parking guidelines with both parties</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 16, 2025 02:00 PM:</span>
+                            <span class="log-message">Mediation session scheduled</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 17, 2025 09:00 AM:</span>
+                            <span class="log-message">Both parties agreed on parking arrangement</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 17, 2025 10:15 AM:</span>
+                            <span class="log-message">Documentation updated in system</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resolved Column -->
+        <div class="kanban-column">
+            <div class="kanban-header resolved">
+                <h3>Resolved</h3>
+                <span class="column-count">3</span>
+            </div>
+            <div class="kanban-cards">
+                <div class="complaint-card">
+                    <div class="card-id">C3</div>
+                    <div class="card-info">
+                        <span>🏠 Room 302</span>
+                        <span>👤 Bob Wilson</span>
+                    </div>
+                    <div class="type-badge">Billing</div>
+                    <div class="card-description">Incorrect charges on monthly statement</div>
+                    <div class="card-date">📅 Oct 13, 2025 10:00 AM</div>
+                    <div class="last-update" style="color: #66BB6A;">✅ Resolved: Oct 17, 2025 03:45 PM</div>
+                    <div class="records-title">Records</div>
+                    <div class="record-logs-container">
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 13, 2025 10:00 AM:</span>
+                            <span class="log-message">Billing discrepancy reported</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 13, 2025 11:30 AM:</span>
+                            <span class="log-message">Finance team notified</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 15, 2025 09:00 AM:</span>
+                            <span class="log-message">Billing records reviewed and verified</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 17, 2025 02:00 PM:</span>
+                            <span class="log-message">Credit issued to tenant account</span>
+                        </div>
+                        <div class="record-log">
+                            <span class="log-timestamp">Oct 17, 2025 03:45 PM:</span>
+                            <span class="log-message">Tenant notified and confirmed resolution</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="complaint-card">
+                    <div class="card-id">C8</div>
+                    <div class="card-info">
+                        <span>🏠 Room 302</span>
+                        <span>👤 Bob Wilson</span>
+                    </div>
+                    <div class="type-badge">Billing</div>
+                    <div class="card-description">Incorrect charges on monthly statement</div>
+                    <div class="card-date">📅 Oct 13, 2025 10:00 AM</div>
+                    <div class="last-update" style="color: #66BB6A;">✅ Resolved: Oct 17, 2025 03:45 PM</div>
+                </div>
+                <div class="complaint-card">
+                    <div class="card-id">C6</div>
+                    <div class="card-info">
+                        <span>🏠 Room 210</span>
+                        <span>👤 Emily Davis</span>
+                    </div>
+                    <div class="type-badge">Maintenance</div>
+                    <div class="card-description">Broken window lock needs replacement</div>
+                    <div class="card-date">📅 Oct 12, 2025 08:30 AM</div>
+                    <div class="last-update" style="color: #66BB6A;">✅ Resolved: Oct 16, 2025 02:00 PM</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateGreeting() {
+        const hour = new Date().getHours();
+        let greeting;
+
+        if (hour >= 5 && hour < 12) {
+            greeting = "Good Morning, Admin!";
+        } else if (hour >= 12 && hour < 18) {
+            greeting = "Good Afternoon, Admin!";
+        } else {
+            greeting = "Good Evening, Admin!";
+        }
+
+        const greetingElement = document.querySelector('.greeting');
+        if (greetingElement) {
+            greetingElement.textContent = greeting;
+        }
+    }
+
+    updateGreeting();
+</script>

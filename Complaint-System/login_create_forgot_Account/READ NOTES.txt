@@ -1,0 +1,4 @@
+FINAL LOGIN/CREATE ACCOUNT
+
+* di pa sure kung lalagyan pa ng exact number ng rooms like choose only from 101-110 since super haba niya sa validation. (kayo ba what do u think)
+* for testing palang yung function (i think dapat naka php siya)

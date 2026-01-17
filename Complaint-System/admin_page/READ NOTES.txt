@@ -1,0 +1,5 @@
+ADMIN PAGE NEW FEATURES
+
+* add new admin - yung current admin pwede siyang mag add ng new admin (bahala na kayo if may better way kung pano siya mag wowork)
+* record logs - bali yung in progress and resolved lang yung may record logs.
+

@@ -1,0 +1,175 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #F3F8FF 0%, #E8F4FE 100%);
+    color: #0a1128;
+}
+
+/* ──────────────── TOP BAR ──────────────── */
+.top-bar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(144, 202, 249, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* ──────────────── LOGO ──────────────── */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.logo-text-complaint,
+.logo-text-desk {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.logo-text-complaint {
+    color: #42a5f5;
+}
+
+.logo-text-desk {
+    color: #ffab00;
+}
+
+/* ──────────────── NAVIGATION ──────────────── */
+.nav-menu {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.nav-link {
+    position: relative;
+    text-decoration: none;
+    color: #0a1128;
+    background: transparent;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-bottom: 3px solid transparent;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #42a5f5, #3B82F6);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-link:hover {
+    color: #42a5f5;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Active (selected) link */
+.nav-link.active {
+    color:#3B82F6;
+    border-bottom: 3px solid #3B82F6;
+
+}
+
+.nav-link.active::after {
+    width: 0;
+}
+
+/* ──────────────── HAMBURGER MENU ──────────────── */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 28px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: #42a5f5;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ──────────────── RESPONSIVE ──────────────── */
+@media (max-width: 900px) {
+    .nav-menu {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 220px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(16px);
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-menu.open {   /* ✅ match JS toggle() */
+        transform: translateX(0);
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 20px;
+    }
+
+    .greeting {
+        font-size: 24px;
+    }
+
+    .menu-form,
+    .filter-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .kanban-container {
+        grid-template-columns: 1fr;
+    }
+}
